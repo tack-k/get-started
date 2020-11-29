@@ -1,11 +1,30 @@
-import './App.css';
+import React from 'react';
 
-function App() {
+const App = () => {
   return (
-    <div>
-
+    <div className="bg">
+      <div className="inner">
+        <div className="do">
+          <p>やってみたいこと</p>
+          <button>スタート</button>
+        </div>
+        <div className="interesting">
+          <div className="like">
+            <button>気になる</button>
+            <div className="like-field">
+              ・スキューバダイビング
+          </div>
+          </div>
+          <div className="dislike">
+            <button>絶対無理</button>
+            <div className="like-field">
+              ・バンジージャンプ
+          </div>
+          </div>
+        </div>
+      </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

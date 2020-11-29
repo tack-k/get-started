@@ -11,3 +11,43 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* -------------------------------------------------------- */
+.inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: beige;
+}
+
+.do {
+  background-color: #FFFFFF;
+  margin: 5%;
+}
+
+.interesting {
+  display: flex;
+  justify-content: space-around;
+}
+
+.like {
+  flex-basis: 45%;
+}
+
+.like-field {
+  background-color: coral;
+}
+
+.dislike {
+  flex-basis: 45%;
+}
+
+.dislike-field {
+  background-color: red;
+}
+
