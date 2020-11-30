@@ -20,7 +20,9 @@ const App = () => {
     const wannaDoData = dataset.wannaDo;
     const random = Math.floor(Math.random() * (wannaDoData.length));
     const WannaDoContent = wannaDoData[random].content
+    const WannaDoUrl = wannaDoData[random].url
     setContent(WannaDoContent);
+    setUrl(WannaDoUrl);
     wannaDoData.splice(random, 1)
     setDataset(dataset)
     setLikeDisabled(false)
@@ -36,13 +38,14 @@ const App = () => {
   }
 
   const addLike = () => {
-    const newLike = [...like, content]
+    const newLike = [...like, [content, url]]
+    console.log(newLike);
     setLike(newLike)
     setDisable();
   }
 
   const addDislike = () => {
-    const newDislike = [...dislike, content]
+    const newDislike = [...dislike, [content, url]]
     setDisLike(newDislike)
     setDisable();
   }
@@ -65,7 +68,7 @@ const App = () => {
               {like.map((value, index) => {
                 return (
                   <div className="like-list" key={index.toString()}>
-                    <li>{value}</li>
+                    <a href={value[1]} target='_blank'>{value[0]}</a>
                   </div>
                 )
               })
@@ -78,7 +81,7 @@ const App = () => {
               {dislike.map((value, index) => {
                 return (
                   <div className="like-list" key={index.toString()}>
-                    <li>{value}</li>
+                    <a href={value[1]} target='_blank'>{value[0]}</a>
                   </div>
                 )
               })
