@@ -1,20 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Dataset from './dataset';
 import { WannaDo, ButtonSelect } from './components/index'
+import { useScrollTrigger } from '@material-ui/core';
 
 const App = () => {
 
   const [dataset, setDataset] = useState(Dataset);
-  const [content, setContent] = useState("やりたいことを見つける");
+  const [content, setContent] = useState("");
   const [url, setUrl] = useState("");
   const [like, setLike] = useState([])
   const [dislike, setDisLike] = useState([])
-  const [likeDisabled, setLikeDisabled] = useState(true)
-  const [DisLikeDisabled, setDisLikeDisabled] = useState(true)
-  const [themeDisabled, setThemeDisabled] = useState(false)
-
-  
-  
+  const [buttonName, setButtonName] = useState(true)    
+ 
+ const changeButtonName = () => {
+   if (buttonName === true) {
+    changeContent()
+   } else {
+    window.location.reload()
+   }
+  setButtonName(false) 
+ }
   
   const changeContent = () => {
     const wannaDoData = dataset.wannaDo;
@@ -25,30 +30,42 @@ const App = () => {
     setUrl(WannaDoUrl);
     wannaDoData.splice(random, 1)
     setDataset(dataset)
-    setLikeDisabled(false)
-    setDisLikeDisabled(false)
-    setThemeDisabled(true)
-
   }
 
-  const setDisable = () => {
-    setLikeDisabled(true)
-    setDisLikeDisabled(true)
-    setThemeDisabled(false)
-  }
+
+
 
   const addLike = () => {
-    const newLike = [...like, [content, url]]
-    console.log(newLike);
-    setLike(newLike)
-    setDisable();
+    switch (true) {
+      case buttonName:
+        break;
+      case dataset.wannaDo.length === 0:
+      break;
+    
+      default:
+        changeContent()
+        const newLike = [...like, [content, url]]
+        setLike(newLike)
+        break;
+    }
   }
 
   const addDislike = () => {
-    const newDislike = [...dislike, [content, url]]
-    setDisLike(newDislike)
-    setDisable();
+    switch (true) {
+      case buttonName:
+        break;
+      case dataset.wannaDo.length === 0:
+      break;
+    
+      default:
+        changeContent()
+        const newDislike = [...dislike, [content, url]]
+        setDisLike(newDislike)
+        break;
+    }
   }
+
+  
 
 
 
@@ -56,14 +73,15 @@ const App = () => {
   return (
     <div className="bg">
       <div className="inner">
+  <div className="try">{dataset.wannaDo.length === 0 ? 'やりたいことを実践しよう!' : 'やりたいことを見つけよう!'}</div>
         <div className="do">
-          <WannaDo content={content} url={"url"} />
-          <ButtonSelect onClick={changeContent} buttonName={"次のテーマ"} disabled={themeDisabled} />
+          <WannaDo content={content} dataset={dataset} />
+          <ButtonSelect onClick={changeButtonName} buttonName={buttonName ? "スタート"　: "リセットする"}/>
         </div>
         <div className="interesting">
           <div className="like">
 
-            <ButtonSelect onClick={addLike} buttonName={"気になる"} disabled={likeDisabled} />
+            <ButtonSelect onClick={addLike} buttonName={"気になる"} />
             <div className="like-field">
               {like.map((value, index) => {
                 return (
@@ -76,7 +94,7 @@ const App = () => {
             </div>
           </div>
           <div className="dislike">
-            <ButtonSelect onClick={addDislike} buttonName={"絶対無理"} disabled={DisLikeDisabled} />
+            <ButtonSelect onClick={addDislike} buttonName={"絶対無理"} />
             <div className="dislike-field">
               {dislike.map((value, index) => {
                 return (

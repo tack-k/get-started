@@ -12,12 +12,12 @@ const useStyles = makeStyles(() => ({
 
 
 const ButtonSelect = (props) => {
-  const {onClick, buttonName, disabled} = props;
+  const {onClick, buttonName} = props;
   const classes = useStyles();
 
   return (
     <div>
-       <Button variant="contained" disabled={disabled} onClick={onClick}>{buttonName}</Button>
+       <Button variant="contained" onClick={onClick}>{buttonName}</Button>
     </div>
   )
 }

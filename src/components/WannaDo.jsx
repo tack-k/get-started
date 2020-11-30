@@ -1,9 +1,11 @@
 import React from 'react'
 
 const WannaDo = (props) => {
-  const {content} = props;
+  const {content, dataset} = props;
+  const lastData = dataset.wannaDo.length
+  
   return (
-  <p>{content}</p>
+  <p>{lastData === 0 ? "" : content}</p>
   )
 }
 
