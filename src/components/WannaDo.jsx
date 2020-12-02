@@ -1,11 +1,13 @@
 import React from 'react'
 
 const WannaDo = (props) => {
-  const {content, dataset} = props;
+  const {content, dataset, color} = props;
   const lastData = dataset.wannaDo.length
 
   return (
-  <p className="title">{lastData === 0 ? "" : content}</p>
+  <p className="title" style={{
+    color
+  }}>{lastData === 0 ? "Finish" : content}</p>
   )
 }
 
