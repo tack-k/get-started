@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# アプリ名
+気になる!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 概要
+やりたいことを見つけられない人が、気になることを見つけて行動をおこすきっかけをつくるアプリです。
 
-## Available Scripts
+- 気になる/絶対無理なことをリスト化  
+次々と示される項目を「気になる」「絶対無理」ボタンを押すことで、自分の興味がリスト化されます。
+- 気になることに直アクセス
+気になった項目にアクセスすれば、その場で実行する情報が得られます。
 
-In the project directory, you can run:
+# 本番環境
+https://koike-takumi.com/
 
-### `yarn start`
+# 制作背景(意図)
+このアプリを制作した意図は「プログラミングを始めたいけど始められない人の背中を押したい」と思ったからです。
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+プログラミングを始められない理由は2点あるのではないかと考えました。  
+①プログラミング学習に関する情報が増えてユーザーが選べなくなっている  
+②選んだ学習法に自信が持てない
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+特に、②は身近にエンジニアがいなくて相談できないため、結局最後の一歩が踏み出せないのではないかと考えました。そのため、エンジニアに相談して不安を取り除き、学習を始める勇気付けができたら嬉しいと思い、このアプリを作成しました。
 
-### `yarn test`
+# DEMO
+- 学習法の診断〜診断結果表示  
+![result](app/gif/demo.gif)  
+- ユーザー登録〜チャット〜クーポン送信  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# 工夫したポイント
+## ユーザーの使いやすさ
+- 学習法診断は多くのユーザーに使ってもらいたいので、ログインせずに使用可能
+- 質問を選択するたびに内容が入れ替わるようにして回答のストレスを低減
+- チャットは非同期通信にすることでストレスを低減
 
-### `yarn build`
+## レスポンシブ対応
+- スマホ、タブレットサイズごとにブレイクポイントを設定
+- スマホ画面の高さ一杯の設定(100vh)について、アドレスバー分の高さをjavascriptで調整
+- ハンバーガーメニューの実装
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 運営側のの体制整備
+- 入力データの管理、管理者ユーザーの管理、チャットルームへの移行体制を整備
+- 管理者ユーザーはすべてのチャットルームにアクセスできるように設定
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# 使用技術(開発環境)  
+Ruby on rails  
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# 課題や今後実装したい機能  
+- 未読メッセージのあるroomの表示機能  
+管理者がユーザーからのメッセージに即時対応できるようにするためです。
 
-### `yarn eject`
+- アプリに対する「いいね」機能  
+たくさんの「いいね」があればユーザーが安心してアプリを使えるようになるからです。
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- 質問の進捗表示  
+仮に質問が多くなった場合、あと何問で終わるかがわからないとストレスになるからです。
