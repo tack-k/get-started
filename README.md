@@ -10,7 +10,7 @@ Get-Started
 気になった項目をクリックすれば、その場で実行する情報が得られます。
 
 # 本番環境
-https://koike-takumi.com/
+https://get-started-7382c.web.app
 
 # 制作背景(意図)
 このアプリを制作した意図は「後悔しない人生を送ってもらいたい」からです。
