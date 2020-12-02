@@ -23,7 +23,7 @@ https://koike-takumi.com/
 
 # DEMO
 - 学習法の診断〜診断結果表示  
-![result](app/gif/demo.gif)  
+![result](gif/demo.gif)  
 - ユーザー登録〜チャット〜クーポン送信  
 
 # 工夫したポイント
