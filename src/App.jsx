@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Dataset from './dataset';
-import { WannaDo, ButtonSelect } from './components/index'
+import { WannaDo, ButtonSelect, Box } from './components/index'
 
 const App = () => {
 
@@ -71,9 +71,9 @@ const App = () => {
       console.log('aaa');
     }
   }, [like])
-  
+
   useEffect(() => {
-    const scrollArea = document.getElementById('dislike-scroll') 
+    const scrollArea = document.getElementById('dislike-scroll')
     if (scrollArea) {
       scrollArea.scrollTop = scrollArea.scrollHeight;
     }
@@ -84,7 +84,7 @@ const App = () => {
 
   return (
     <div className="bg">
-        <div className="top">{dataset.wannaDo.length === 0 ? '気になることを実践しよう!' : "Let's find what you want to do!"}</div>
+      <div className="top">{dataset.wannaDo.length === 0 ? '気になることを実践しよう!' : "Let's find what you want to do!"}</div>
       <div className="inner">
         <WannaDo content={content} dataset={dataset} color={buttonName ? "#ccbb29" : "#FFFFFF"} />
         <div className="container">
@@ -92,33 +92,8 @@ const App = () => {
             <ButtonSelect onClick={changeButtonName} color={'#FFFFFF'} colorHover={buttonName ? "#2525c5;" : "#ec2e2e"} buttonName={buttonName ? "スタート" : "リセットする"} />
           </div>
           <div className="interesting">
-            <div className="box">
-              <ButtonSelect onClick={addLike} color={'#FFFFFF'} colorHover={"#ccbb29"} buttonName={"気になる"} />
-              <div className="field" id="like-scroll">
-                {like.map((value, index) => {
-                  return (
-                    <div className="list" key={index.toString()}>
-                      <a href={value[1]} target='_blank'>{index + 1}|{value[0]}</a>
-                    </div>
-                  )
-                })
-                }
-              </div>
-            </div>
-
-            <div className="box">
-              <ButtonSelect onClick={addDislike} color={'#FFFFFF'} colorHover={"#3a3a3a"} buttonName={"絶対無理"} />
-              <div className="field" id="dislike-scroll">
-                {dislike.map((value, index) => {
-                  return (
-                    <div className="list" key={index.toString()}>
-                      <a href={value[1]} target='_blank'>{index + 1}|{value[0]}</a>
-                    </div>
-                  )
-                })
-                }
-              </div>
-            </div>
+            <Box onClick={addLike} color={'#FFFFFF'} colorHover={"#ccbb29"} buttonName={"気になる"} content={like} id={"like-scroll"}/>
+            <Box onClick={addDislike} color={'#FFFFFF'} colorHover={"#3a3a3a"}  buttonName={"絶対無理"} content={dislike} id={"dislike-scroll"}/>
           </div>
         </div>
       </div>
